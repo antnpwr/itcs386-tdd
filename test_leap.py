@@ -1,4 +1,5 @@
 # test_leap.py
+import pytest
 from leap import is_leap
 
 def test_2024_is_a_leap_year():
@@ -18,3 +19,7 @@ def test_1900_is_not_a_leap_year():
 
 def test_is_leap(year, expected):
     assert is_leap(year) == expected
+
+def test_year_zero_is_rejected():
+    with pytest.raises(ValueError, match="1 or later"):
+        is_leap(0)
